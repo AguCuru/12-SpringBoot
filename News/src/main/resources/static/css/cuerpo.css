@@ -1,0 +1,20 @@
+body {
+  margin: 5px;
+  text-align: center;
+ 
+}
+
+.container-fluid{
+    background-color: white;
+    padding: 20px;
+}
+
+.table{
+    text-align: center;
+
+}
+
+h1{
+    padding-top: 2%;
+    padding-bottom:  2%;
+}

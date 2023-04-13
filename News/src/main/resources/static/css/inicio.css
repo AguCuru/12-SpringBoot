@@ -1,0 +1,16 @@
+body {
+  margin: 5px;
+  text-align: center;
+ 
+}
+
+.container-fluid{
+    background-color: white;
+    padding: 1%;
+}
+
+.table{
+    text-align: center;
+    padding: 15%;
+}
+
