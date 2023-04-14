@@ -19,7 +19,7 @@
             <div class="d-flex justify-content-center " id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" th:href="@{/admin/lista}">Panel admin</a>
+                        <a class="nav-link" th:href="@{/noticia/lista}">Panel admin</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -48,6 +48,7 @@
                         <th scope="col">Titulo de la noticia</th>
                         <th scope="col">Acciones</th>
                         <th scope="col">Eliminar</th>
+                        <th scope="col">Leer</th>
                     </tr>
                 </thead>
 
@@ -62,7 +63,11 @@
                         <td>
                             <a th:href="@{/noticia/eliminar/__${noticia.id}__}"><i class="fas fa-feather-alt">  </i> Eliminar  </a>
 
-                        </td>                        
+                        </td>
+                        <td>
+                            <a th:href="@{/noticia/lista/__${noticia.id}__}"><i class="fas fa-feather-alt">  </i> Leer  </a>
+
+                        </td>  
                     </tr>    
             </table>            
         </div>

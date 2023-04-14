@@ -20,78 +20,11 @@ public class AdminControlador {
     @Autowired
     private NoticiaServicio noticiaServicio;
 
-    @GetMapping("/dashboard/{id}")
+    @GetMapping("/dashboard")
     public String panelAministrativo(ModelMap modelo) {
-        List<Noticia> noticias = noticiaServicio.listarNoticias();
 
-        modelo.addAttribute("noticias", noticias);
         return "panel.html";
     }
 
-    @GetMapping("/lista")
-    public String lista(ModelMap modelo) {
-
-        List<Noticia> noticias = noticiaServicio.listarNoticias();
-
-        modelo.addAttribute("noticias", noticias);
-
-        return "noticia_list.html";
-    }
-
-    @GetMapping("/crearNoti") //localhost:8080/noticia/crearNoti
-    public String crearNoti(ModelMap modelo) {
-
-        List<Noticia> noticias = noticiaServicio.listarNoticias();
-
-        modelo.addAttribute("noticias", noticias);
-
-        return "noticia_form.html";
-    }
-
-    @PostMapping("/crear")
-    public String crear(@RequestParam String titulo, @RequestParam String cuerpo, ModelMap modelo) {
-
-        try {
-            noticiaServicio.crearNoticia(titulo, cuerpo);
-
-            modelo.put("exito", "La noticia se guardo correctamente!");
-
-        } catch (MiException ex) {
-
-            List<Noticia> noticias = noticiaServicio.listarNoticias();
-
-            modelo.addAttribute("noticias", noticias);
-
-            modelo.put("error", ex.getMessage());
-
-            return "noticia_form.html";
-        }
-        return "noticia_form.html";
-    }
-
-    @GetMapping("/modificar/{id}")
-    public String modificar(@PathVariable Long id, ModelMap modelo) {
-        modelo.put("noticia", noticiaServicio.getOne(id));
-        return "noticia_modificar.html";
-    }
-
-    @PostMapping("/modificar/{id}")
-    public String modificar(@PathVariable Long id, String titulo, String cuerpo, ModelMap modelo) {
-        try {
-            noticiaServicio.modificarNoticia(id, titulo, cuerpo);
-
-            return "redirect:../lista";
-        } catch (MiException ex) {
-            modelo.put("error", ex.getMessage());
-            return "noticia_modificar.html";
-        }
-    }
-
-    @GetMapping("/eliminar/{id}")
-    public String eliminar(@PathVariable Long id, ModelMap modelo) {
-        noticiaServicio.eliminar(id);
-
-        return "redirect:../lista";
-    }
 
 }

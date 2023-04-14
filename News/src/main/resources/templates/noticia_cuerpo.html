@@ -9,40 +9,47 @@
         <link rel="stylesheet" href="/css/cuerpo.css">
     </head>
     <body>
-    <nav class="navbar navbar-expand-lg bg-light  ">
-        <div class="container-fluid justify-content-center">
-            <a class="navbar-brand" href="/">NotiCuru</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="d-flex justify-content-center " id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" th:href="@{/noticia/inicio}">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/noticia/lista}">Panel admin</a>
-                    </li>
-                </ul>
+        <nav class="navbar navbar-expand-lg bg-light  ">
+            <div class="container-fluid justify-content-center">
+                <a class="navbar-brand" href="/">NotiCuru</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="d-flex justify-content-center " id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li>
+                            <a class="nav-link" th:href="@{/noticia/lista}">Panel admin</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Perfil
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" th:href="@{/logout}">Cerrar Sesion</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
 
         <div class="noticia" >
 
             <h1  th:text="${noticia.titulo}"></h1>
 
-            <p  th:text="${noticia.cuerpo}">a</p>
-            
+            <p  th:text="${noticia.cuerpo}"></p>
+
         </div>
 
-  
-
-        
-        
 
 
-         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>        
+
+
+
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>        
     </body>
 </html>

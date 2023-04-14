@@ -10,10 +10,19 @@ body {
     padding: 20px;
 }
 
+
+
+
 .formulario{
     width: 50%;
     margin: auto;
     display: flex;
     flex-direction: column;
 }
+
+.form-cuerpo{
+    height: 100px;
+}
+
+
 

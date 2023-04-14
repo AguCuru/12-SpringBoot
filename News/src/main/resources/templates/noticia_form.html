@@ -6,7 +6,8 @@
         <title>Registro de Noticias</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-        <link rel="stylesheet" href="/css/registro.css">
+
+        <link rel="stylesheet" href="/css/login.css">
     </head>
     <body>
     <nav class="navbar navbar-expand-lg bg-light  ">
@@ -47,11 +48,11 @@
 
         <div class="container-fluid">
             <form class="formulario" th:action="@{/noticia/crear}" method="POST">
-                <div class="form-group">
-                    <input type="text" class="form-group" name="titulo" placeholder="Titulo noticia">
+                <div class="form-group my-3">
+                    <input type="text" class="form-titulo" name="titulo" placeholder="Titulo noticia">
                 </div>
-                <div class="form-group">
-                    <input type="text" class="form-group" name="cuerpo" placeholder="Cuerpo noticia">
+                <div class="form-group my-3">
+                    <input type="text" size="50" class="form-cuerpo" name="cuerpo" placeholder="Cuerpo noticia">
                 </div>
                 <br>
                 <button type="submit" class="btn btn-primary"> FINALIZAR </button> 
