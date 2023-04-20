@@ -1,12 +1,44 @@
 body {
-  margin: 5px;
-  text-align: center;
- 
+    margin: 5px;
+    text-align: center;
+
+}
+
+
+
+h1{
+    padding-top: 2%;
+    padding-bottom:  2%;
 }
 
 .container-fluid{
     background-color: white;
     padding: 20px;
 }
+
+
+.formulario{
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.table{
+    text-align: center;
+
+}
+
+
+img{
+    width: 30%;
+    margin: auto;
+}
+
+
+
+
+
+
 
 

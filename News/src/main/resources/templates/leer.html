@@ -8,14 +8,7 @@
         <div class="MensajeBienvenida">
             <h1 th:if="${session.usuariosession != null}" th:text="'Bienvenido de nuevo ' + ${session.usuariosession.nombre}"  ></h1>
         </div>
-        <div class="container">
-            <a th:if="${session.usuariosession.imagen != null}" class="d-flex align-items-center">
-                <img class="imgPerfil"  th:src="@{/imagen/perfil/__${session.usuariosession.id}__}" >
-            </a>
-        </div> 
-        
-
-
+    
         <div class="container-fluid row row-cols-1 row-cols-md-3 g-2" >
             <div class="row" th:each="noticia : ${noticias}">
                 <div class="col">
@@ -23,7 +16,7 @@
                         <div class="card-body">
                             <h5 class="card-title" th:text="${noticia.titulo}"></h5>
                             <p class="card-text" th:text="${noticia.cuerpo}"></p>
-                            <a th:href="@{/noticia/inicio/__${noticia.id}__}" class="btn btn-primary">Leer</a>
+                            <a th:href="@{/noticia/leer/__${noticia.id}__}" class="btn btn-primary">Leer</a>
                         </div>
                     </div>
                 </div>

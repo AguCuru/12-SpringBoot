@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Noticia {
@@ -13,6 +14,9 @@ public class Noticia {
     private Long id;
     private String titulo;
     private String cuerpo;
+    
+    @ManyToOne
+    private Periodista creador;
 
     public Noticia() {
     }
@@ -48,6 +52,16 @@ public class Noticia {
     public void setCuerpo(String cuerpo) {
         this.cuerpo = cuerpo;
     }
+
+    public Periodista getCreador() {
+        return creador;
+    }
+
+    public void setCreador(Periodista creador) {
+        this.creador = creador;
+    }
+    
+    
 
     @Override
     public String toString() {
