@@ -3,7 +3,7 @@
     <head th:replace= "/fragments/head :: head"> </head>
     <body>
         <nav th:replace= "/fragments/navbar :: nav"> </nav>
-            
+
 
         <div th:if="${error != null}" class="card text-white bg-danger mb-3 mensajeError" >
             <div class="card-body">
@@ -29,6 +29,7 @@
                 <div class="form-group my-3">
                     <input type="text" class="form-control" name="nombre" placeholder="NOMBRE" th:value="${nombre}">
                 </div>
+
                 <div class="form-group my-3">
                     <input type="email" class="form-control" name="email" placeholder="EMAIL" th:value="${email}">
                 </div>
@@ -40,6 +41,20 @@
                 </div>
                 <div class="form-group my-3">
                     <input type="password" class="form-control" name="password2" placeholder="REPETIR CONTRASEÑA" th:value="${password2}">
+                </div>
+                <div class="form-group my-3">
+                    <!--<input type="text" class="form-control" name="rol" placeholder="ROL" th:value="${rol}">-->
+                    <select name="rol">
+
+                        <option>Seleccionar Rol</option>
+                        
+                            <option value="PERIODISTA">PERIODISTA</option>
+                            <option value="USER">USER</option>
+                            
+                        
+
+
+                    </select>
                 </div>
 
 

@@ -1,6 +1,7 @@
 package com.Egg.News.controladores;
 
 import com.Egg.News.entidades.Usuario;
+import com.Egg.News.enumeraciones.Rol;
 import com.Egg.News.excepciones.MiException;
 import com.Egg.News.servicios.ImagenServicio;
 import com.Egg.News.servicios.UsuarioServicio;
@@ -26,6 +27,8 @@ public class PortalControlador { //localhost:8080/
     @Autowired
     private ImagenServicio imagenServicio;
     
+
+    
     @GetMapping("/")
     public String index(){ //localhost:8080/
         
@@ -38,11 +41,13 @@ public class PortalControlador { //localhost:8080/
     }
     
     @PostMapping("/registro")
-    public String registro(@RequestParam String nombre,@RequestParam String email,@RequestParam String password, String password2,
+    public String registro(@RequestParam String nombre,@RequestParam String email,@RequestParam String password, String password2, Rol rol,
             ModelMap modelo, MultipartFile archivo){
+
+        
         
         try {
-            usuarioServicio.registrar(archivo,nombre, email, password, password2);
+            usuarioServicio.registrar(archivo,nombre, email, password, password2, rol);
             
             modelo.put("exito", "Usuario registrado correctamente");
             
@@ -68,7 +73,7 @@ public class PortalControlador { //localhost:8080/
         return "login.html";
     }    
     
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_USER','ROLE_ADMIN','ROLE_PERIODISTA')")
     @GetMapping("/inicio")
     public String inicio(HttpSession session) {
         
@@ -81,7 +86,7 @@ public class PortalControlador { //localhost:8080/
         return "inicio.html";
     }
     
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN','ROLE_PERIODISTA')")
     @GetMapping("/perfil")
     public String perfil(ModelMap modelo,HttpSession session){
         Usuario usuario = (Usuario) session.getAttribute("usuariosession");
@@ -89,17 +94,17 @@ public class PortalControlador { //localhost:8080/
         return "usuario_modificar.html";
     } 
     
-    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN','ROLE_PERIODISTA')")
     @PostMapping("/perfil/{id}")
     public String actualizar(MultipartFile archivo,@PathVariable Long id, @RequestParam String nombre,@RequestParam String email, 
-            @RequestParam String password,@RequestParam String password2, ModelMap modelo) {
+            @RequestParam String password,@RequestParam String password2,Rol rol, ModelMap modelo) {
 
         try {
             if (archivo.isEmpty()) {
                 
-                usuarioServicio.actualizar( id, nombre, email, password, password2);   
+                usuarioServicio.actualizar( id, nombre, email, password, password2, rol);   
             } else {
-                usuarioServicio.actualizar(archivo, id, nombre, email, password, password2);
+                usuarioServicio.actualizar(archivo, id, nombre, email, password, password2, rol);
             }
 
             
@@ -116,5 +121,7 @@ public class PortalControlador { //localhost:8080/
             return "usuario_modificar.html";
         }
 
-    }    
+    }
+
+  
 }

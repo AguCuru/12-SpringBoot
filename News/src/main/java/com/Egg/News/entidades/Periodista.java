@@ -13,24 +13,29 @@ public class Periodista extends Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private ArrayList<Noticia> noticias;
+    private ArrayList<Noticia> misNoticias;
     private Integer sueldoMensual;
+
+    public Periodista() {
+    }
+    
+    
 
     public Periodista(Long id, ArrayList<Noticia> noticias, Integer sueldoMensual, String email, String password, Rol rol) {
         super(email, password, rol);
         this.id = id;
-        this.noticias = noticias;
+        this.misNoticias = noticias;
         this.sueldoMensual = sueldoMensual;
     }
 
 
 
     public ArrayList<Noticia> getNoticias() {
-        return noticias;
+        return misNoticias;
     }
 
     public void setNoticias(ArrayList<Noticia> noticias) {
-        this.noticias = noticias;
+        this.misNoticias = noticias;
     }
 
     public Integer getSueldoMensual() {

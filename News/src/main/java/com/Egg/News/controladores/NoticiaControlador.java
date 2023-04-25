@@ -21,7 +21,7 @@ public class NoticiaControlador {
     private NoticiaServicio noticiaServicio;
 
     @GetMapping("/lista")
-    public String lista( ModelMap modelo) {
+    public String lista(ModelMap modelo) {
 
         List<Noticia> noticias = noticiaServicio.listarNoticias();
 
@@ -29,8 +29,8 @@ public class NoticiaControlador {
 
         return "noticia_list.html";
     }
-    
-        @GetMapping("/lista/{id}")
+
+    @GetMapping("/lista/{id}")
     public String lista(@PathVariable Long id, ModelMap modelo) {
 
         Noticia noticia = noticiaServicio.getOne(id);
@@ -38,6 +38,26 @@ public class NoticiaControlador {
 
         return "noticia_cuerpo.html";
     }
+    @GetMapping("/leer")
+    
+    public String leer(ModelMap modelo) {
+
+        List<Noticia> noticias = noticiaServicio.listarNoticias();
+
+        modelo.addAttribute("noticias", noticias);
+
+        return "leer.html";
+    }
+
+    @GetMapping("/leer/{id}")
+    public String leer(@PathVariable Long id,ModelMap modelo) {
+
+        List<Noticia> noticias = noticiaServicio.listarNoticias();
+
+        modelo.addAttribute("noticias", noticias);
+
+        return "noticia_cuerpo.html";
+    }    
 
     @GetMapping("/inicio")
     public String inicio(ModelMap modelo) {
@@ -48,16 +68,8 @@ public class NoticiaControlador {
 
         return "inicio.html";
     }
-    
-        @GetMapping("/leer")
-    public String leer(ModelMap modelo) {
 
-        List<Noticia> noticias = noticiaServicio.listarNoticias();
 
-        modelo.addAttribute("noticias", noticias);
-
-        return "leer.html";
-    }
 
     @GetMapping("/inicio/{id}")
     public String inicio(@PathVariable Long id, ModelMap modelo) {
@@ -77,10 +89,10 @@ public class NoticiaControlador {
     }
 
     @PostMapping("/crear")
-    public String crear(@RequestParam String titulo, @RequestParam String cuerpo, @RequestParam Noticia creador, ModelMap modelo) {
+    public String crear(@RequestParam String titulo, @RequestParam String cuerpo, ModelMap modelo) {
 
         try {
-            noticiaServicio.crearNoticia(titulo, cuerpo, creador);
+            noticiaServicio.crearNoticia(titulo, cuerpo);
 
             modelo.put("exito", "La noticia se guardo correctamente!");
 
@@ -104,9 +116,9 @@ public class NoticiaControlador {
     }
 
     @PostMapping("/modificar/{id}")
-    public String modificar(@PathVariable Long id, String titulo, String cuerpo,Noticia creador, ModelMap modelo) {
+    public String modificar(@PathVariable Long id, String titulo, String cuerpo, ModelMap modelo) {
         try {
-            noticiaServicio.modificarNoticia(id, titulo, cuerpo, creador);
+            noticiaServicio.modificarNoticia(id, titulo, cuerpo);
 
             return "redirect:../lista";
         } catch (MiException ex) {

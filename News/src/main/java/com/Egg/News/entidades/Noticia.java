@@ -15,8 +15,8 @@ public class Noticia {
     private String titulo;
     private String cuerpo;
     
-    @ManyToOne
-    private Periodista creador;
+//    @ManyToOne
+//    private Periodista creador;
 
     public Noticia() {
     }
@@ -53,13 +53,13 @@ public class Noticia {
         this.cuerpo = cuerpo;
     }
 
-    public Periodista getCreador() {
-        return creador;
-    }
-
-    public void setCreador(Periodista creador) {
-        this.creador = creador;
-    }
+//    public Periodista getCreador() {
+//        return creador;
+//    }
+//
+//    public void setCreador(Periodista creador) {
+//        this.creador = creador;
+//    }
     
     
 

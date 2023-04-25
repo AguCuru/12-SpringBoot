@@ -16,7 +16,7 @@
                         <div class="card-body">
                             <h5 class="card-title" th:text="${noticia.titulo}"></h5>
                             <p class="card-text" th:text="${noticia.cuerpo}"></p>
-                            <a th:href="@{/noticia/leer/__${noticia.id}__}" class="btn btn-primary">Leer</a>
+                            <a th:href="@{/noticia/lista/__${noticia.id}__}" class="btn btn-primary">Leer</a>
                         </div>
                     </div>
                 </div>

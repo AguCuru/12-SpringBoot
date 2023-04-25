@@ -15,7 +15,7 @@
                     <tr>
                         <th scope="col">Id de la noticia</th>
                         <th scope="col">Titulo de la noticia</th>
-                        <th scope="col">Creador de la noticia</th>
+                        <!--<th scope="col">Creador de la noticia</th>-->
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
@@ -24,7 +24,7 @@
                     <tr>
                         <th scope="row" th:text="${noticia.id}"></th>
                         <td th:text="${noticia.titulo}"></td>
-                        <td th:text="${noticia.creador}"></td>
+                        <!--<td th:text="${noticia.creador}"></td>-->
                         <td>
                             <li class="nav-item dropdown"style="list-style-type: none;">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -32,7 +32,7 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" th:href="@{/noticia/modificar/__${noticia.id}__}">Modificar</a></li>
-                                    <li><a class="dropdown-item" th:href="@{/noticia/eliminar/__${noticia.id}__}">Eliminar</a></li>
+                                    <li><a class="dropdown-item" sec:authorize="hasRole('ADMIN')" th:href="@{/noticia/eliminar/__${noticia.id}__}">Eliminar</a></li>
                                     <li><a class="dropdown-item" th:href="@{/noticia/lista/__${noticia.id}__}">Leer</a></li>
                                 </ul>
                             </li>
